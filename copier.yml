@@ -1,6 +1,6 @@
 _exclude:
   - ".git"
-  - ".github"
+  - ".github/workflows/generate.yml"
   - "copier.yml"
 
 project_name:
@@ -36,4 +36,3 @@ _tasks:
     npx --yes sv create . --template minimal {% if use_ts %}--types ts{% else %}--types js{% endif %} --install {{ install_pm }} --no-dir-check --add prettier eslint tailwindcss="plugins:typography" vitest="usages:unit,component"
   - command: npm pkg set author="{{ author }}"
   - command: mv -f README.copier.md README.md
-  - command: mv dot-github .github
