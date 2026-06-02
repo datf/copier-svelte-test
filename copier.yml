@@ -1,3 +1,6 @@
+_exclude:
+  - ".github"
+
 project_name:
   type: str
   help: What is the name of your Svelte project?
