@@ -43,7 +43,7 @@ jobs:
           copier copy --defaults --trust \
             -d project_name="${{ github.repository }}" \
             -d author="${{ github.repository_owner }}" \
-            gh:YOUR_GITHUB_USERNAME/YOUR_TEMPLATE_REPO_NAME .
+            gh:datf/copier-svelte-test .
 
       - name: Commit and Push
         run: |
