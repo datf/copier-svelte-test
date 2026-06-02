@@ -9,7 +9,6 @@ services:
       - '5173:5173'
     volumes:
       - .:/app
-      - /app/node_modules
     environment:
       - NODE_ENV=development
       # Force Vite to use polling if standard HMR file watching fails
