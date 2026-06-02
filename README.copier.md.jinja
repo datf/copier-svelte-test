@@ -5,19 +5,25 @@ Created by **{{ author }}**.
 
 ## Getting Started
 
-Install the dependencies using your package manager:
+Source the aliases file
 
-```bash
-{{ install_pm }} install
-{{ install_pm }} run dev
+```sh
+. ./aliases
 ```
+
+Build (and run) the container
+
+```sh
+pupb
+```
+
+Start developing!
 
 ## Building
 
-To create a production version:
+To use pnpm, with the container running, source aliases again and use the alias `ppnpm`
 
 ```sh
-npm run build
+. ./aliases
+ppnpm install PACKAGE_NAME
 ```
-
-You can preview the production build with `npm run preview`.
