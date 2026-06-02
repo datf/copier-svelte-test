@@ -1,4 +1,5 @@
 _exclude:
+  - ".git"
   - ".github"
 
 project_name:
