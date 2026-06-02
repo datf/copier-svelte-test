@@ -1,0 +1,26 @@
+project_name:
+  type: str
+  help: What is the name of your Svelte project?
+  default: my-svelte-app
+
+use_ts:
+  type: bool
+  help: Do you want to use TypeScript?
+  default: true
+
+install_pm:
+  type: str
+  help: Which package manager do you want to use?
+  choices:
+    - pnpm
+    - npm
+    - yarn
+  default: pnpm
+
+_tasks:
+  - command: npm install -g pnpm
+    when: "{{ install_pm == 'pnpm' }}"
+  - command: npm install -g yarn
+    when: "{{ install_pm == 'yarn' }}"
+  - >-
+    npx sv create {{ project_name }} --template minimal {% if use_ts %}--types ts{% else %}--types js{% endif %} --install {{ install_pm }} --add prettier eslint tailwindcss="plugins:typography" vitest="usages:unit,component"
