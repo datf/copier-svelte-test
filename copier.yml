@@ -23,4 +23,4 @@ _tasks:
   - command: npm install -g yarn
     when: "{{ install_pm == 'yarn' }}"
   - >-
-    npx sv create {{ project_name }} --template minimal {% if use_ts %}--types ts{% else %}--types js{% endif %} --install {{ install_pm }} --add prettier eslint tailwindcss="plugins:typography" vitest="usages:unit,component"
+    npx --yes sv create {{ project_name }} --template minimal {% if use_ts %}--types ts{% else %}--types js{% endif %} --install {{ install_pm }} --add prettier eslint tailwindcss="plugins:typography" vitest="usages:unit,component"
