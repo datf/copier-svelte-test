@@ -40,7 +40,10 @@ jobs:
       - name: Run Copier
         run: |
           # Use --defaults but inject the repository name dynamically
-          copier copy --defaults --trust -d project_name="${{ github.repository }}" gh:datf/copier-svelte-test .
+          copier copy --defaults --trust \
+            -d project_name="${{ github.repository }}" \
+            -d author="${{ github.repository_owner }}" \
+            gh:YOUR_GITHUB_USERNAME/YOUR_TEMPLATE_REPO_NAME .
 
       - name: Commit and Push
         run: |
