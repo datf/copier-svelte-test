@@ -33,7 +33,7 @@ _tasks:
   - command: npm install -g yarn
     when: "{{ install_pm == 'yarn' }}"
 
-  - command: bash -c 'mkdir -p .tmp-addon && echo "@datf:registry=https://npm.pkg.github.com/" > .npmrc && pnpm add @datf/sveltekit-github-pages-config-dockerized --dir .tmp-addon'
+  - command: bash -c 'mkdir -p .tmp-addon && pnpm add @datf/sveltekit-github-pages-config-dockerized --dir .tmp-addon --registry=https://npm.pkg.github.com/ --config.registry=https://npm.pkg.github.com/'
 
   - >-
     npx --yes sv create . --template minimal {% if use_ts %}--types ts{% else %}--types js{% endif %} --install {{ install_pm }} --no-dir-check --add prettier eslint tailwindcss="plugins:typography" vitest="usages:unit" sveltekit-adapter=adapter:static "file:.tmp-addon/node_modules/@datf/sveltekit-github-pages-config-dockerized"
