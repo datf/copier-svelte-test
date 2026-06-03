@@ -32,8 +32,9 @@ _tasks:
     when: "{{ install_pm == 'pnpm' }}"
   - command: npm install -g yarn
     when: "{{ install_pm == 'yarn' }}"
+  - command: bash -c 'echo "" >> .npmrc && echo "@datf:registry=https://npm.pkg.github.com" >> .npmrc'
   - >-
-    npx --yes sv create . --template minimal {% if use_ts %}--types ts{% else %}--types js{% endif %} --install {{ install_pm }} --no-dir-check --add prettier eslint tailwindcss="plugins:typography" vitest="usages:unit" sveltekit-adapter=adapter:static
+    npx --yes sv create . --template minimal {% if use_ts %}--types ts{% else %}--types js{% endif %} --install {{ install_pm }} --no-dir-check --add prettier eslint tailwindcss="plugins:typography" vitest="usages:unit" sveltekit-adapter=adapter:static "@datf/sveltekit-github-pages-config-dockerized"
   - command: npm pkg set author="{{ author }}"
   - command: bash -c 'echo "" >> .npmrc && echo "store-dir=.pnpm-store" >> .npmrc'
     when: "{{ install_pm == 'pnpm' }}"
