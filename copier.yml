@@ -33,7 +33,7 @@ _tasks:
   - command: npm install -g yarn
     when: "{{ install_pm == 'yarn' }}"
   - >-
-    npx --yes sv create . --template minimal {% if use_ts %}--types ts{% else %}--types js{% endif %} --install {{ install_pm }} --no-dir-check --add prettier eslint tailwindcss="plugins:typography" vitest="usages:unit,component"
+    npx --yes sv create . --template minimal {% if use_ts %}--types ts{% else %}--types js{% endif %} --install {{ install_pm }} --no-dir-check --add prettier eslint tailwindcss="plugins:typography" vitest="usages:unit,component" sveltekit-adapter=adapter:static
   - command: npm pkg set author="{{ author }}"
   - command: bash -c 'echo "" >> .npmrc && echo "store-dir=.pnpm-store" >> .npmrc'
     when: "{{ install_pm == 'pnpm' }}"
