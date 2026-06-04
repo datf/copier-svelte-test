@@ -28,16 +28,16 @@ jobs:
       - name: Install Copier
         run: pip install copier
 
+      - name: Clear repository (except .git and .github)
+        run: |
+          find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: '24'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@datf'
-
-      - name: Clear repository (except .git and .github)
-        run: |
-          find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
 
       - name: Run Copier
         env:
