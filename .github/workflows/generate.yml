@@ -32,12 +32,16 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '24'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@datf'
 
       - name: Clear repository (except .git and .github)
         run: |
           find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
 
       - name: Run Copier
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Use --defaults but inject the repository name dynamically
           copier copy --defaults --trust \
