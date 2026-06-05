@@ -1,3 +1,4 @@
+{% raw %}
 name: Deploy to GitHub Pages
 permissions:
   contents: read
@@ -6,11 +7,10 @@ on:
   push:
     branches:
       - 'master'
+      - 'main'
 
 jobs:
   build_site:
-    # Only run this if the repository isn't the template repository itself
-    if: ${{ github.repository != 'datf/copier-svelte-test' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Run only if it's NOT the template repo AND GitHub Pages is enabled
-    if: ${{ github.repository != 'datf/copier-svelte-test' && github.event.repository.has_pages == true }}
+    if: ${{ github.event.repository.has_pages == true }}
 
     permissions:
       pages: write
@@ -68,3 +68,4 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v5
+{% endraw %}
