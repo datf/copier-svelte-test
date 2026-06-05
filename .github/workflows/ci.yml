@@ -1,4 +1,3 @@
-{% raw %}
 name: CI (Build & Test)
 
 on:
@@ -12,6 +11,8 @@ permissions:
 
 jobs:
   build_and_test:
+    # Only run this if the repository isn't the template repository itself
+    if: ${{ github.repository != 'datf/copier-svelte-test' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -44,4 +45,3 @@ jobs:
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
         run: pnpm run build
-{% endraw %}
