@@ -46,14 +46,11 @@ jobs:
         timeout-minutes: 5
         run: |
           pnpm run dev &
-          sleep 10
-          pnpx wait-on http://localhost:5173
+          pnpx wait-on -d 10 -t 30s http://localhost:5173
           
       - name: Test build and preview
         timeout-minutes: 5
         run: |
           pnpm run build
-          pnpm run preview &
-          sleep 10
-          pnpx wait-on http://localhost:4173
+          pnpx wait-on -d 10 -t 30s http://localhost:4173
 
