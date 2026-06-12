@@ -52,5 +52,6 @@ jobs:
         timeout-minutes: 5
         run: |
           pnpm run build
+          pnpm run preview &
           pnpx wait-on -d 10 -t 30s http://localhost:4173
 
