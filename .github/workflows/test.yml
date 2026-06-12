@@ -45,15 +45,15 @@ jobs:
       - name: Test dev server
         timeout-minutes: 5
         run: |
-          npm run dev &
-          sleep 30
-          curl -s -o /dev/null -w "%{http_code}" http://localhost:5173 | grep 200
+          pnpm run dev &
+          sleep 10
+          pnpx wait-on http://localhost:5173
           
       - name: Test build and preview
         timeout-minutes: 5
         run: |
-          npm run build
-          npm run preview &
-          sleep 30
-          curl -s -o /dev/null -w "%{http_code}" http://localhost:4173 | grep 200
+          pnpm run build
+          pnpm run preview &
+          sleep 10
+          pnpx wait-on http://localhost:4173
 
